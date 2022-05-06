@@ -1,0 +1,8 @@
+docker image build . -t custom-caddy:2.5.0-alpine
+docker container run --name my-caddy-server -p 2000:80 -d custom-caddy:2.5.0-alpine
+docker container ls 
+docker container stop my-caddy-server
+docker container ls -a
+docker container rm my-caddy-server
+docker container run --name my-caddy-server -p 2000:80 -v $PWD/Caddyfile:/etc/caddy/Caddyfile -v $PWD/pages:/usr/src/pages -d custom-caddy:2.5.0-alpine
+
